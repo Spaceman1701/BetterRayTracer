@@ -26,16 +26,15 @@ namespace BetterRayTrace.Render.Shading
 
             Vector3f lVec = (data.Position - l.Position).Normalize();
 
-            float lambert = (lVec * norm) * md.Diffuse;
+            float lambert = (lVec * norm) * 0.3f * md.Diffuse;
 
             //Specular
             Vector3f reflect = -Vector3f.ReflectVector(lVec, norm);
-            float spec = md.Specular * MathUtil.Pow(MathUtil.Max(reflect * eyeVec, 0.0f), md.Shininess);
+            float spec = md.Specular * MathUtil.Pow(MathUtil.Max(reflect * eyeVec, 0.0f), 1);
 
             //outputColor = (spec * md.SpecularColor.AsVector3()) + (lambert * md.DiffuseColor.AsVector3());
             //}
-
-            return (spec * md.SpecularColor.AsVector3()) + (lambert * md.DiffuseColor.AsVector3());
+            return new Vector3f((spec * md.SpecularColor.AsVector3()) + (lambert * md.DiffuseColor.AsVector3()));
         }
         public float CalculateIndirectDiffuseContribution(RayIntersection data, Scene scene)
         {

@@ -50,10 +50,25 @@ namespace BetterRayTrace.Math
             return this;
         }
 
+        public override string ToString()
+        {
+            return "Vector3 <" + x + ", " + y + ", " + z + ">";
+        }
+
         public static Vector3f ReflectVector(Vector3f vec, Vector3f reflector)
         {
             Vector3f norm = new Vector3f(reflector).Normalize();
             return vec - (2 * (vec * norm) * norm);
+        }
+
+        public static float Distance2(Vector3f a, Vector3f b)
+        {
+            return (a - b).Mag2();
+        }
+
+        public static float Distance(Vector3f a, Vector3f b)
+        {
+            return (a - b).Mag();
         }
 
         public float this[int i] //For easy loop access

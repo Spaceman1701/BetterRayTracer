@@ -14,6 +14,12 @@ namespace BetterRayTrace.Render.RayTrace
         private Vector3f direction;
 
 
+        public Ray(Vector3f start, Vector3f direction)
+        {
+            this.start = new Vector3f(start);
+            this.direction = new Vector3f(direction);
+        }
+
         public Vector3f Start
         {
             get { return new Vector3f(start); }

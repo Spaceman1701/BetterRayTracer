@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BetterRayTrace.Render.RayTrace;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BetterRayTrace.Math;
 
 namespace BetterRayTrace.Render
 {
@@ -50,6 +52,34 @@ namespace BetterRayTrace.Render
         public ISet<IRenderObject> RenderObjects
         {
             get { return renderables; }
+        }
+
+        public RayIntersection FindFirstIntersection(Ray ray)
+        {
+            IList<RayIntersection> intersections = new List<RayIntersection>();
+            foreach (IRenderObject o in renderables)
+            {
+                RayIntersection intersection = o.FindFirstIntersection(ray);
+                if (intersection != null)
+                {
+                    intersections.Add(intersection);
+                } 
+            }
+
+            RayIntersection closestIntersection = null;
+            float minDistance = float.MaxValue;
+
+            foreach (RayIntersection ri in intersections)
+            {
+                float distance = Vector3f.Distance(ri.Position, ray.Start);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestIntersection = ri;
+                }
+            }
+
+            return closestIntersection;
         }
     }
 }

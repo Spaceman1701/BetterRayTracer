@@ -8,5 +8,16 @@ namespace BetterRayTrace.Render
 {
     class RenderData
     {
+        private Color color;
+
+        public RenderData(Color color)
+        {
+            this.color = color;
+        }
+
+        public Color Color
+        {
+            get { return color; }
+        }
     }
 }

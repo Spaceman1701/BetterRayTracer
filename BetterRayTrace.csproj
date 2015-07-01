@@ -44,17 +44,22 @@
     <Compile Include="Render\Light.cs" />
     <Compile Include="Render\Material\MaterialData.cs" />
     <Compile Include="Render\OrthoRenderManager.cs" />
+    <Compile Include="Render\Output\BasicOutputConverter.cs" />
+    <Compile Include="Render\Output\ImageOutput.cs" />
     <Compile Include="Render\Output\OutputData.cs" />
     <Compile Include="Render\RayTrace\Ray.cs" />
     <Compile Include="Render\RayTrace\RayIntersection.cs" />
+    <Compile Include="Render\RayTrace\RayLifetimeManager.cs" />
     <Compile Include="Render\RenderData.cs" />
     <Compile Include="Render\Renderer.cs" />
     <Compile Include="Render\Scene.cs" />
     <Compile Include="Render\Shading\IDirectContributionModel.cs" />
     <Compile Include="Render\Shading\PhongDirectContributionModel.cs" />
+    <Compile Include="Render\Sphere.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

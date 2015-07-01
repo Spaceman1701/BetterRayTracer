@@ -22,6 +22,11 @@ namespace BetterRayTrace.Render
             data = new Vector3f(grayscale);
         }
 
+        public Color(Vector3f src)
+        {
+            this.data = new Vector3f(src);
+        }
+
         public Color(Color c) : this(c.R, c.G, c.B) { }
 
         public Color Trim()
